@@ -1,108 +1,19 @@
-body{
-	border-top: solid 5px #7e5c88; 
+#app .btn{
+	width: 110px;
 }
-.clear{
-	clear: both;
+#app ul{
+	display: inline;
 }
-.featImg {
-    margin: 5px;
-    border: 1px solid #ccc;
-    float: left;
-    width: 180px;
+#app ul li{
+	display: inline;
 }
-
-.featImg:hover {
-    border: 1px solid #777;
-}
-
-.featImg img {
-    width: 100%;
-    height: auto;
-}
-
-.desc {
-    padding: 15px;
-    text-align: center;
-}
-#header{
-	padding: 26px 20px;
-}
-#logo{
-	float: left;
-}
-#search{
-	float: right;
-}
-#search input[type=text]{
-	padding: 9px;
-	font-size: 17px;
-	float: left;
-}
-#search button{
-	float: right;
-	padding: 10px;
-	background: #7e5c88;
-	color: white;
-	font-size: 17px;
-	border: 1px solid grey;
-	border-left: none; 
-	cursor: pointer;
-}
-#menu{
-	font-family: 'Cormorant Garamond', serif;
-	float: left;
-	margin: 25px 0;
-	background: linear-gradient(#f0f0f0, #efefef);
+.footer{
+	position: fixed;
+	left: 0;
+	bottom: 0;
 	width: 100%;
-	/*background-color: #f0f0f0;*/
+	text-align: center;
 }
-#menu ul{
-	float: left;
-	margin: 21px 0;
-}
-#menu ul li{
-	float: left;
-}
-#menu ul li a{
-	padding: 23px 17px 21px;
-	color: #666666;
-	text-decoration: none; 
-	font-size: 11px;
-	text-transform: uppercase;
-	font-weight: 400;
-}
-#menu ul li a:hover{
-	background-color: #7e5c88;
-	color: white;
-}
-#gallery{
-	margin: 25px;
-	height: 370px;
-	width: 960px;
-}
-#bigImage{
-	float: left;
-	border: solid 1px #dbdbdb;
-	height: 360px;
-	width: 59%;
-}
-#bigImage > img{
-	float: left;
-	margin: 1px;
-	width: 560px;
-	height: 358px;
-	
-}
-#fourBoxes{
-	margin: 0 1%;
-	float: right;
-	height: 370px;
-	width: 38%;
-}
-#fourBoxes > img {
-  width: 45%;
-  float: right; 
-  align-items: center;
-  height: auto;
-  margin: 1%;
+#home{
+	width: 100%
 }
