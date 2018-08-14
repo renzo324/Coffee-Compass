@@ -4,15 +4,14 @@ function home(){
     location.reload('app');
 }
 function welcome(){
-    var x= '<div class= "row justify-content-center"> <div class="col">';
+    var x= '<div class= "row justify-content-center"> <div class="col p-0">';
     x += '<div class="jumbotron jumbotron-fluid">';
-    x += '<div class="container">';
+    x += '<div class="container" id="landing">';
     x += '<h1 class="display-4">Welcome to HomeBrew!</h1>';
-    x += '<p class="lead">A place to share and discover new ways to enjoy coffee.</p>';
-    x += '<ul><li><a id="find" class="btn btn-secondary" href="#"> Find Coffee! </a></li>';
-    x += '<li><a id="partner" class="btn btn-secondary" href="#"> Be a Partner! </a></li>';
-    x += '<li><a id="signUp" class="btn btn-secondary" href="#"> Sign Up! </a></li></ul>';
-    x += ' </div> </div> </div> </div>';
+    x += '<p class="lead">A place to share and discover new ways to enjoy coffee.</p><ul>';
+    x += '<li><a id="find" class="btn btn-secondary" href="#"> Find Coffee! </a></li>';
+    x += '<li><a id="signUp" class="btn btn-secondary" href="#"> Sign Up! </a></li>';
+    x += '</ul> </div> </div> </div> </div>';
     document.getElementById('app').innerHTML = x;
 }
 
