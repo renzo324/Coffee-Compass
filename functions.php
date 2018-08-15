@@ -23,8 +23,8 @@ function getData()
         $resp = '[';
         while ($row = $result->fetch_assoc()) {
             $resp .= '{"id" : ' . '"' . $row['id'] . '",';
-            $resp .= '"is_done" : ' . '"' . $row['is_done'] . '",';
-            $resp .= '"task" : ' . '"' . $row['task'] . '"},';
+            $resp .= '"establishmentName" : ' . '"' . $row['establishmentName'] . '",';
+            $resp .= '"address" : ' . '"' . $row['address'] . '"},';
         }
         $resp .= ']';
         $resp = str_replace(',]', ']', $resp);
@@ -34,11 +34,11 @@ function getData()
 
 function addLocation()
 {
-    $is_done = $_POST['is_done'];
-    $task    = $_POST['task'];
+    $establishmentName = $_POST['establishmentName'];
+    $address    = $_POST['address'];
     
     
-    $sql    = "INSERT INTO `directory` (`id`, `is_done`, `task`) VALUES (NULL, '" . false . "', '" . $task . "');";
+    $sql    = "INSERT INTO `directory` (`id`, `establishmentName`, `address`) VALUES (NULL, '" . false . "', '" . $address . "');";
     $result = $GLOBALS['conn']->query($sql);
 }
 function deleteLocation($id)
