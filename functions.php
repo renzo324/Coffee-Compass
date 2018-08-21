@@ -11,10 +11,39 @@ if ($_GET) {
         getData();
     if ($_GET['function'] == 'addLocation')
         addLocation();
+    if ($_GET['function'] == 'updateLocation')
+        addLocation();
     if ($_GET['function'] == 'deleteLocation')
         deleteLocation($_GET['id']);
 }
+function loginUser(){
+        $loggedin=false;
+        $sql = "SELECT * FROM `users` WHERE `email` LIKE '".$_POST['email']."'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                if($row['password']==md5($_POST['password'])) $loggedin = true;
+            }
+        }
+        if($loggedin){
+        echo 'Login Sucessful';
+        } else {
+        echo 'Invalid login';
+        }
+        }
 
+}
+function registerUser(){
+    $userName = '';
+    $password = '';
+    $email = '';
+    if(isset($_POST['userName'], $_POST['email'], $_POST['password'])) {
+    $userName=$_POST['userName'];
+    $email=$_POST['email'];
+    $password=$_POST['password'];
+    };
+    $sql = "INSERT INTO `users` (`id`, `userName`, `password`, `email`) VALUES ( NULL, '".$userName."','".$password."','".$email."');";
+}
 function getData()
 {
     $sql    = "SELECT * FROM `directory` , `drinks`, `amenities` WHERE `directory`.`id` = `drinks`.`id` and `directory`.`id` = `amenities`.`id`";
@@ -47,6 +76,8 @@ function getData()
 
 function addLocation()
 {
+    $establishmentName = '';$contact = ''; $address = ''; $coffee = '';$sweets = '';$snacks = '';$meals = '';$other = '';$wifi = '';$charging = '';$parking = '';$24hours = '';$smoking ='';$delivery = '';$pricepoint = '';
+     if(isset($_POST['establishmentName'], $_POST['contact'],  $_POST['address'],$_POST['coffee'],$_POST['sweets'],$_POST['snacks'],$_POST['meals'],$_POST['other'],$_POST['wifi'],$_POST['charging'],$_POST['parking'],$_POST['24hours'],$_POST['smoking'],$_POST['delivery'],$_POST['pricepoint'])) {
     $establishmentName = $_POST['establishmentName'];
     $contact = $_POST['contact']; 
     $address = $_POST['address'];
@@ -62,14 +93,15 @@ function addLocation()
     $smoking = $_POST['smoking'];
     $delivery = $_POST['delivery'];
     $pricepoint = $_POST['pricepoint'];
-    
+    };
     $sql = "INSERT INTO `directory` (`id`, `establishmentName`, `contact`,`address` ) VALUES (NULL, '" . $establishmentName . "', '".$contact."','" . $address . "');";
     $sql .= "INSERT INTO `drinks`(`id`, `coffee`, `sweets`, `snacks`, `meals`, `other`) VALUES (NULL, '" .$coffee."', '".$sweets."','".$snacks."','".$meals."','".$other."');";
     $sql .= "INSERT INTO `amenities`(`id`, `wifi`, `charging`, `parking`, `24hours`, `smoking`, `delivery`, `pricepoint`) VALUES (NULL, '" .$wifi."', '".$charging."','".$parking."','".$24hours."','".$smoking."','".$delivery."','".$pricepoint   ."');";
     $result = $GLOBALS['conn']->query($sql);
 }
 
-function updateData($id){
+function updateLocation($id){
+    
     if(isset($_POST['establishmentName'], $_POST['contact'],  $_POST['address'],$_POST['coffee'],$_POST['sweets'],$_POST['snacks'],$_POST['meals'],$_POST['other'],$_POST['wifi'],$_POST['charging'],$_POST['parking'],$_POST['24hours'],$_POST['smoking'],$_POST['delivery'],$_POST['pricepoint'])) {
     $establishmentName = $_POST['establishmentName'];
     $contact = $_POST['contact']; 
