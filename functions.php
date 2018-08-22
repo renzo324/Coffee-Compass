@@ -44,6 +44,17 @@ function registerUser(){
     };
     $sql = "INSERT INTO `users` (`id`, `userName`, `password`, `email`) VALUES ( NULL, '".$userName."','".$password."','".$email."');";
 }
+function updatePassword(){
+    $userName = '';
+    $password = '';
+    $email = '';
+    if(isset($_POST['userName'], $_POST['email'], $_POST['password'])) {
+    $userName=$_POST['userName'];
+    $email=$_POST['email'];
+    $password=$_POST['password'];
+    };
+    $sql = "UPDATE `users` set `password` ='".$establishmentName."';";
+}
 function getData()
 {
     $sql    = "SELECT * FROM `directory` , `drinks`, `amenities` WHERE `directory`.`id` = `drinks`.`id` and `directory`.`id` = `amenities`.`id`";
