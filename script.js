@@ -7,10 +7,11 @@ function welcome(){
     var x= '<div class= "row justify-content-center"> <div class="col p-0">';
     x += '<div class="jumbotron jumbotron-fluid">';
     x += '<div class="container" id="landing">';
-    x += '<h1 class="display-4">Welcome to HomeBrew!</h1>';
+    x += '<h1 class="display-4">Compass Logo goes here!</h1>';
     x += '<p class="lead">A place to share and discover new ways to enjoy coffee.</p><ul>';
-    x += '<li><a id="find" class="btn btn-secondary" href="#"> Find Coffee! </a></li>';
-    x += '<li><a id="signUp" class="btn btn-secondary" href="#"> Sign Up! </a></li>';
+    x += '<li><a id="find" class="btn btn-secondary myNav" href="#"> Find Coffee! </a></li>';
+    x += '<li><a id="login" class="btn btn-secondary myNav" href="#">  Login  </a></li>';
+    x += '<li><a id="signUp" class="btn btn-secondary myNav" href="#"> Sign Up! </a></li>';
     x += '</ul> </div> </div> </div> </div>';
     document.getElementById('app').innerHTML = x;
 }
@@ -21,11 +22,17 @@ function find(){
     x += '';
     document.getElementById('app').innerHTML = x;
 }
-document.getElementById("partner").addEventListener("click", partner);
-function partner(){
-    var x ='<h1> Parter signup goes here</h1>'
-    x+= ''
+document.getElementById("login").addEventListener("click", login);
+function login(){
+    var x ='<h1> Login form goes here</h1>';
+    x+= '';
     document.getElementById('app').innerHTML = x;
+    var endPoint = "functions.php?function=loginUser";
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', endPoint, true);
+    xhr.onload = function(){
+        console.log('add the login form here');
+    }
 }
 document.getElementById("signUp").addEventListener("click", signUp);
 function signUp(){
@@ -38,7 +45,7 @@ function signUp(){
    
  // XHR request
 
- function getData() {
+function getData() {
     var endPoint = "functions.php?function=getData";
     var xhr = new XMLHttpRequest();
     xhr.open('GET', endPoint, true);
