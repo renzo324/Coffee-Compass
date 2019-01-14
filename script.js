@@ -24,8 +24,20 @@ function find(){
 }
 document.getElementById("login").addEventListener("click", login);
 function login(){
-    var x ='<h1> Login form goes here</h1>';
-    x+= '';
+    var x ='<!-- Comment of the day --> ';
+    x+= '<div class="container">';
+    x+= '<div class="main-div">';
+    x+= '<div class="panel">';
+    x+= '<h2>Admin Login</h2>';
+    x+= '<p>Please enter your email and password</p>';
+    x+= '</div>';
+    x+= '<form id="Login">';
+    x+= '<div class="form-group"><input type="email" class="form-control" id="inputEmail" placeholder="Email Address"></div>';
+    x+= '<div class="form-group"><input type="password" class="form-control" id="inputPassword" placeholder="Password"></div>';
+    x+= '<div class="forgot"><a href="reset.html">Forgot password?</a></div>';
+    x+= '<button type="submit" class="btn btn-primary">Login</button>';
+    x+= '</form>';
+    x+= '</div> </div>';
     document.getElementById('app').innerHTML = x;
     var endPoint = "functions.php?function=loginUser";
     var xhr = new XMLHttpRequest();
@@ -37,6 +49,15 @@ function login(){
 document.getElementById("signUp").addEventListener("click", signUp);
 function signUp(){
     var x ='<h1> Customer signup goes here</h1>';
+    x+= '<div class="span3 well">';
+    x+= '<h1>New to <a href="#" id="appName">Compass</a>? Sign up!</h1';
+    x+= '<form accept-charset="UTF-8" action="" method="post">';
+    x+= '<input class="span3" name="name" placeholder="Full Name" type="text">';
+    x+= '<input class="span3" name="username" placeholder="Username" type="text">';
+    x+= '<input class="span3" name="password" placeholder="Password" type="password"> ';
+    x+= '<button class="btn btn-warning" type="submit">Sign up for WebApp</button>';
+    x+= '</form>';
+    x+= '</div>';
     x+= '';
     document.getElementById('app').innerHTML = x;
 }
