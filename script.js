@@ -28,14 +28,14 @@ function login(){
     x+= '<div class="container">';
     x+= '<div class="main-div">';
     x+= '<div class="panel">';
-    x+= '<h2>Admin Login</h2>';
+    x+= '<h2> Login</h2>';
     x+= '<p>Please enter your email and password</p>';
     x+= '</div>';
-    x+= '<form id="Login">';
+    x+= '<form id="Login" onsubmit="event.preventDefault();">';
     x+= '<div class="form-group"><input type="email" class="form-control" id="inputEmail" placeholder="Email Address"></div>';
     x+= '<div class="form-group"><input type="password" class="form-control" id="inputPassword" placeholder="Password"></div>';
     x+= '<div class="forgot"><a href="reset.html">Forgot password?</a></div>';
-    x+= '<button type="submit" class="btn btn-primary">Login</button>';
+    x+= '<button type="submit" id="submitLogin" class="btn btn-primary">Login</button>';
     x+= '</form>';
     x+= '</div> </div>';
     document.getElementById('app').innerHTML = x;
@@ -45,6 +45,26 @@ function login(){
     xhr.onload = function(){
         console.log('add the login form here');
     }
+}
+document.getElementById("submitLogin").addEventListener("click", submitLogin);
+function submitLogin(){
+    var endpoint= "functions.php?function=login";
+    // var endPoint = "https://cors-anywhere.herokuapp.com/www.lorenzo-test.live/functions.php?function=login";
+  
+    var formData = new FormData();
+
+  formData.append("email", document.getElementsByName("email")[0].value);
+  formData.append("password", document.getElementsByName("password")[0].value);
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', endPoint, true);
+  xhr.onload = function() {
+      if (this.status == 200) {
+         var response = this.response;
+         console.log(response);
+      };
+  };
+  xhr.send(formData);
 }
 document.getElementById("signUp").addEventListener("click", signUp);
 function signUp(){
@@ -66,23 +86,3 @@ function signUp(){
    
  // XHR request
 
-function getData() {
-    var endPoint = "functions.php?function=getData";
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', endPoint, true);
-    xhr.onload = function() {
-        if (this.status == 200) {
-            var r = JSON.parse(this.response);
-            var x = '';
-
-            for (var i = 0, len = r.length; i < len; i++) {
-            x += '<li>' + r[i].task + '<button class="btn btn-light" onclick="deleteTask(' + r[i].id + ')">Done!</button> </li> <br>' ;
-            }
-
-            document.getElementById('todo').innerHTML = x;
-
-
-        };
-    };
-    xhr.send();
-}
