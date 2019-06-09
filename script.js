@@ -22,8 +22,8 @@ function find(){
     x += '';
     document.getElementById('app').innerHTML = x;
 }
-document.getElementById("login").addEventListener("click", login);
-function login(){
+document.getElementById("login").addEventListener("click", loginform);
+function loginform(){
     var x ='<!-- Comment of the day --> ';
     x+= '<div class="container">';
     x+= '<div class="main-div">';
@@ -46,8 +46,8 @@ function login(){
         console.log('add the login form here');
     }
 }
-document.getElementById("submitLogin").addEventListener("click", submitLogin);
-function submitLogin(){
+document.getElementById("submitLogin").addEventListener("click", login);
+function login(){
     var endpoint= "functions.php?function=login";
     // var endPoint = "https://cors-anywhere.herokuapp.com/www.lorenzo-test.live/functions.php?function=login";
   
