@@ -5,7 +5,7 @@ $password   = "";
 $dbname     = "lorenzot_caffeine";
 $conn       = new mysqli($servername, $username, $password, $dbname);
 
-
+if(isset($_GET['function'])){
     if ($_GET['function'] == 'login'){
         $loggedin=false;
         $sql = "SELECT * FROM `users` WHERE `Email` LIKE '".$_POST['email']."'";
@@ -135,4 +135,5 @@ function deleteLocation($id)
     $sql  .= "DELETE FROM `drinks` WHERE `id` = " . $id . "";
     $sql  .= "DELETE FROM `amenities` WHERE `id` = " . $id . "";
     $resul = $GLOBALS['conn']->query($sql);
+}
 }
