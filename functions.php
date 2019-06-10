@@ -6,15 +6,7 @@ $dbname     = "lorenzot_caffeine";
 $conn       = new mysqli($servername, $username, $password, $dbname);
 
 
-if ($_GET) {
-    if ($_GET['function'] == 'login')
-       login();
-    if ($_GET['function'] == 'register')
-        register();
-    if ($_GET['function'] == 'logout')
-        logout();
-}
-function login(){
+    if ($_GET['function'] == 'login'){
         $loggedin=false;
         $sql = "SELECT * FROM `users` WHERE `Email` LIKE '".$_POST['email']."'";
         $result = $conn->query($sql);
@@ -29,23 +21,23 @@ function login(){
         echo 'Invalid login';
         }
         }
+    if ($_GET['function'] == 'register'){
+        $userName = '';
+        $password = '';
+        $email = '';
+        if(isset($_POST['userName'], $_POST['email'], $_POST['password'])) {
+        $userName=$_POST['userName'];
+        $email=$_POST['email'];
+        $password=$_POST['password'];
+        };
+        $sql = "INSERT INTO `users` (`id`, `userName`, `password`, `email`) VALUES ( NULL, '".$userName."','".$password."','".$email."');";
+    }
+    if ($_GET['function'] == 'logout'){
+        session_start();
+        session_unset();
+        session_destroy();
+        };
 
-function logout(){
-    session_start();
-    session_unset();
-    session_destroy();
-    };
-function register(){
-    $userName = '';
-    $password = '';
-    $email = '';
-    if(isset($_POST['userName'], $_POST['email'], $_POST['password'])) {
-    $userName=$_POST['userName'];
-    $email=$_POST['email'];
-    $password=$_POST['password'];
-    };
-    $sql = "INSERT INTO `users` (`id`, `userName`, `password`, `email`) VALUES ( NULL, '".$userName."','".$password."','".$email."');";
-}
 function updatePassword(){
     $userName = '';
     $password = '';
