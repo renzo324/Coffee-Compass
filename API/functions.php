@@ -1,2 +1,0 @@
-<?php 
-echo 'connection success';
